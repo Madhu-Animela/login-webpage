@@ -1,0 +1,29 @@
+.home-container{
+    /* padding-top: 90px; */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center; 
+   
+   color: white;
+    
+}
+
+.home-button{
+    height: 34px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 15px;
+}
+.home-button-1{
+    height: 34px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: #faf489;
+    border: 0px;
+    color: black;
+    font-size: 15px;
+}
