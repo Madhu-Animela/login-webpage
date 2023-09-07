@@ -90,74 +90,7 @@ export default function Forgot(){
         const n=e.target.name;
         errors[n]="";
     })
-
-    // const OnClickForgotButton=async()=>{
-    //     if(formData.email!==""){
-    //         let userDetails={
-    //             Email:formData.email,
-    //         }
-    //         let options={
-    //             method:"POST",
-    //             headers: {
-    //                 "Content-Type": "application/json"
-    //             },
-    //             body: JSON.stringify(userDetails)
-    //         }
-    //         const response=await fetch("http://localhost:5176/api/UserDetails/forgot",options)
-    //         console.log(response)
-    //         const responseCode=await response.json();
-    //         console.log(responseCode)
-
-    //         if(response.status===200){
-    //             console.log(responseCode.prop)
-    //             setMessage("Email is successfully verified!")
-    //             setName1(true)
-    //         }
-    //         else{
-    //             console.log(responseCode.prop)
-    //             setMessage("Please enter valid email!")
-    //         }
-    //     }
-    // }
-
-    // const OnClickPassword=async()=>{
-    //     if(formData.email!=="" && formData.newPassword!==""  && formData.confirmPassword!=="" && errors.newPassword==="" && errors.confirmPassword==="" ){
-    //         if(formData.newPassword===formData.confirmPassword){
-    //             let userDetails={
-    //                 Email:formData.email,
-    //                 Password:formData.confirmPassword
-    //             }
-    //             let options={
-    //                 method:"POST",
-    //                 headers:{
-    //                     "Content-type":"application/json"
-    //                 },
-    //                 body:JSON.stringify(userDetails),
-    //             }
-                
-    //             const response=await fetch("http://localhost:5176/api/UserDetails/newpassword",options);
-    //             console.log(response)
-    //             const responseCode=await response.json();
-    
-    //             if(response.status===200){
-    //                 console.log(responseCode.prop)
-    //                 alert("password is updated!")
-    //                 navigate("/login",{replace:true})
-    //             }
-    //             else{
-    //                 alert(responseCode.prop)
-    //                 console.log(responseCode.prop)
-    //             }
-    
-    //         }
-    //         else{
-    //             alert("passwords must be same, enter again!")
-    //         }
-    //     }
-        
-    // }
-
-    
+ 
     return(
         <div className="text-item">
             <Text />
@@ -173,7 +106,7 @@ export default function Forgot(){
                 </form>
 
                 <p className={name1?"green":"red"}>{Message}</p>
-                
+
                 <div className={name1?"block-item":"none-item"}>
                     <div className="passwordnew"> 
                         <form onSubmit={handleSubmit1} className="form-container">
