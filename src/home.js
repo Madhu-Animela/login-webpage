@@ -10,7 +10,7 @@ export default function Home(){
         navigate('/login',{relative:true})
     }
     const OnClickSignUp=()=>{
-        navigate('/registar',{replace:true})
+        navigate('/signup',{replace:true})
     }
 
     return(

@@ -1,6 +1,6 @@
 import React from "react";
 
- const Text=()=>{
+ export default function Text(){
     return(
     <div >
         <h1 className='heading'>Turn Your <br></br>Idea's Into Reality</h1><br></br>
@@ -8,4 +8,3 @@ import React from "react";
     </div>
     )
 }
-export default Text;

@@ -1,11 +1,11 @@
 import React ,{useState} from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 import Validation from "./validation";
 import Text from "./text";
 
 function Login(){
-    const[formData,setFormData]=useState({email:"",password:""});
+    const[formData,setFormData]=useState({email:"",password:"",email1:"",password1:""});
     const[errors,setErrors]=useState({})
     const navigate=useNavigate();
 
@@ -13,25 +13,11 @@ function Login(){
         const {name,value}=e.target;
         setFormData({...formData,[name]:value})
     }
-    console.log(errors.password)
-    console.log(errors.email)
-    const handleSubmit=(e)=>{
+    
+    const handleSubmit=async(e)=>{
         e.preventDefault();
         setErrors(Validation(formData));
-    }
-    
-    const OnClickForgot=()=>{
-        navigate('/forget',{replace:true})
-    }
-
-    const OnClickSignUp=()=>{
-        navigate('/registar',{replace:true})
-    }
-    
-
-    const OnLoginDetails=async()=>{
-       
-        if(formData.email!==""  && formData.password!=="" && errors.password==="success" && errors.email==="success"){
+        if(errors.email1==="success" && errors.password1==="success"){
             let userDetails={
                 Email:formData.email,
                 Password:formData.password,
@@ -57,8 +43,16 @@ function Login(){
                 alert(jsonResponse.prop)
             }
         }
-            
     }
+    
+    const OnClickForgot=()=>{
+        navigate('/forget',{replace:true})
+    }
+
+    const OnClickSignUp=()=>{
+        navigate('/signup',{replace:true})
+    }
+    
     const handleFocus=((event)=>{
        const n=event.target.name;
        errors[n]="";
@@ -82,7 +76,7 @@ function Login(){
                         </div><br></br>
                         
                         <div className="button-container">
-                            <button type="submit" className="button" onClick={OnLoginDetails}>Login </button>
+                            <button type="submit" className="button" >Login </button>
                             <p>Don't have an Account? <button type="button" className="button-underline" onClick={OnClickSignUp}>Sing Up</button></p>
                         </div>
                     </div>

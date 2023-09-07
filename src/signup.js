@@ -1,13 +1,15 @@
 
 import React,{useState} from "react";
-import "./registar.css";
+import "./signup.css";
 import { useNavigate } from "react-router-dom";
 import Validation from "./validation";
 import Text from "./text";
 
- function Registar(){
+ function SignUp(){
     const [formData,setFormData]=useState({username:"",email:"",password:"",confirmPassword:""})
     const[errors,setErrors]=useState({})
+
+    const navigate=useNavigate();
 
     const handleChange=(e)=>{
         const {name,value}=e.target;
@@ -16,12 +18,9 @@ import Text from "./text";
     
     const handleSubmit= async (e) =>{
         e.preventDefault();
-        await setErrors(Validation(formData))
-    }
-    const navigate=useNavigate();
-
-    const OnClickSignUpButton=async()=>{
-        if(formData.username!=="" && formData.email!=="" && formData.password!=="" && errors.email==="" && errors.password==="" && errors.confirmPassword===""){
+        setErrors(Validation(formData))
+        
+        if(errors.email1==="success" && errors.password1==="success" && errors.confirmPassword1==="success"){
             if(formData.password===formData.confirmPassword){
                 let userDetails={
                     Name:formData.username,
@@ -45,16 +44,53 @@ import Text from "./text";
                     navigate('/logout',{replace:true})
                 }
                 else{
+                    setErrors(Validation(formData))
                     alert("unable is to sign in the page")
                 }
             
+            }
+            else{
+                alert("Both password are must be same. Please try again!")
+            }
         }
-        else{
-            alert("Both password are must be same. Please try again!")
-        }
-        }
-        
     }
+
+    // const OnClickSignUpButton=async()=>{
+    //     if(formData.username!=="" && formData.email!=="" && formData.password!=="" && errors.email==="" && errors.password.length>6 && errors.confirmPassword.length>6){
+    //         if(formData.password===formData.confirmPassword){
+    //             let userDetails={
+    //                 Name:formData.username,
+    //                 Email:formData.email,
+    //                 Password:formData.password,
+    //             }
+    //             let options={
+    //                 method:"POST",
+    //                 headers: {
+    //                     "Content-Type" : "application/json"
+    //                 },
+    //                 body: JSON.stringify(userDetails),
+    //             }
+    //             const response=await fetch("http://localhost:5176/api/UserDetails/signup",options);
+    //             console.log(response)
+    //             const responseCode=await response.json();
+    //             console.log(responseCode)
+    //             if(response.status===200){
+    //                 console.log(responseCode.prop);
+    //                 alert("User created successfully!")
+    //                 navigate('/logout',{replace:true})
+    //             }
+    //             else{
+    //                 setErrors(Validation(formData))
+    //                 alert("unable is to sign in the page")
+    //             }
+            
+    //     }
+    //     else{
+    //         alert("Both password are must be same. Please try again!")
+    //     }
+    //     }
+        
+    // }
 
     const OnClickSignIn=()=>{
         navigate("/login",{replace:true})
@@ -86,7 +122,7 @@ import Text from "./text";
                         <input type="password" name="confirmPassword" placeholder="Enter Confirm Password"  className="input-item" onFocus={handleFocus1} value={formData.confirmPassword} onChange={handleChange}/><br></br>
                         
 
-                        <div className="button-container"><button type="submit" className="button-signup" onClick={OnClickSignUpButton}>Sign Up</button></div>
+                        <div className="button-container"><button type="submit" className="button-signup" >Sign Up</button></div>
 
                         <p>Already  have an Account?<button type="button" className="button-underline" onClick={OnClickSignIn}>Log In</button></p>
                     
@@ -96,4 +132,4 @@ import Text from "./text";
         </div>
     )
 }
-export default  Registar;
+export default  SignUp;
