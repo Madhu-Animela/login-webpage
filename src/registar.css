@@ -31,13 +31,13 @@
     border-bottom: 2px solid white;
     outline: none;
     font-size: 18px;
-    padding: 10px;
+    padding: 5px;
     font-weight: 100;
     font-style: italic;
     color: white;
 }
 .input-item::placeholder{
-    color:rgb(231, 246, 250);
+    color:rgb(60, 183, 224);
 
 }
 .button-signup{
@@ -49,4 +49,7 @@
     color: white;
     font-size: 14px;
 
+}
+.span-item{
+    text-align: left;
 }

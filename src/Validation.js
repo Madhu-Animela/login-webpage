@@ -1,20 +1,46 @@
-export default function Validation(values){
-    const errors={}
+ //import React from "react"; 
 
-    const email_pattern=/^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/;
-    const password_pattern=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
+export default function Validation(inputValues){
 
-    if(values.name===""){
-        errors.name="Name is Required!";
+    let validationErrors={}
+    
+    if(inputValues.username===""){
+        validationErrors.username="UserName is required"
     }
-    if(values.email===""){
-        errors.email="email is Required!";
-    }else if(!email_pattern.test(values.email)){
-        errors.email="email didn't match"
-    }
-    if(values.password===""){
-        errors.email="email is Required!";
-    }else if(!password_pattern.test(values.password)){
-        errors.password="email didn't match"
-    }
+
+   // const emailCond =
+      //"/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/";
+    if (inputValues.email==="") {
+      validationErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(inputValues.email)) {
+      validationErrors.email = 'Please ingress a valid email address';
+    } 
+
+    const password = inputValues.password;
+    if (!password) {
+      validationErrors.password = 'password is required';
+    } else if (password.length < 6) {
+      validationErrors.password = 'Password must be longer than 6 characters';
+    } else if (password.length >= 20) {
+      validationErrors.password = 'Password must shorter than 20 characters';
+    } 
+
+    const password1 = inputValues.newPassword;
+    if (!password1) {
+      validationErrors.newPassword = 'password is required';
+    } else if (password1.length < 6) {
+      validationErrors.newPassword = 'Password must be longer than 6 characters';
+    } else if (password1.length >= 20) {
+      validationErrors.newPassword = 'Password must shorter than 20 characters';
+    } 
+
+    const password2 = inputValues.confirmPassword;
+    if (!password2) {
+      validationErrors.confirmPassword = 'password is required';
+    } else if (password2.length < 6) {
+      validationErrors.confirmPassword = 'Password must be longer than 6 characters';
+    } else if (password2.length >= 20) {
+      validationErrors.confirmPassword = 'Password must shorter than 20 characters';
+    } 
+    return validationErrors
 }

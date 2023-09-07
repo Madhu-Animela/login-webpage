@@ -1,11 +1,10 @@
 .home-container{
-    /* padding-top: 90px; */
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center; 
-   
    color: white;
+   
     
 }
 
@@ -26,4 +25,10 @@
     border: 0px;
     color: black;
     font-size: 15px;
+}
+.text-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

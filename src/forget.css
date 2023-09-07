@@ -9,8 +9,8 @@
     border: 3px solid white;
     border-radius: 10px;
     padding: 20px; 
-    margin: 10px;
-    color: white;
+    margin-left: 60px;
+    color: white; 
 }
 .button-forgot{
     background-color: transparent;
@@ -25,7 +25,6 @@
     background-color: transparent;
     border: 0px;
     text-decoration: underline;
-    /* color: rgba(244, 212, 49, 0.918); */
     color: yellow;
     font-size: 18px;
 }
@@ -66,4 +65,10 @@
     border: 1px solid white;
     border-radius: 8px;
     color: white;
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
