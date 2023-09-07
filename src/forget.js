@@ -90,7 +90,8 @@ export default function Forgot(){
         const n=e.target.name;
         errors[n]="";
     })
- 
+
+
     return(
         <div className="text-item">
             <Text />

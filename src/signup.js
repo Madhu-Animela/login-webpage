@@ -19,7 +19,7 @@ import Text from "./text";
     const handleSubmit= async (e) =>{
         e.preventDefault();
         setErrors(Validation(formData))
-        
+
         if(errors.email1==="success" && errors.password1==="success" && errors.confirmPassword1==="success"){
             if(formData.password===formData.confirmPassword){
                 let userDetails={
@@ -54,43 +54,6 @@ import Text from "./text";
             }
         }
     }
-
-    // const OnClickSignUpButton=async()=>{
-    //     if(formData.username!=="" && formData.email!=="" && formData.password!=="" && errors.email==="" && errors.password.length>6 && errors.confirmPassword.length>6){
-    //         if(formData.password===formData.confirmPassword){
-    //             let userDetails={
-    //                 Name:formData.username,
-    //                 Email:formData.email,
-    //                 Password:formData.password,
-    //             }
-    //             let options={
-    //                 method:"POST",
-    //                 headers: {
-    //                     "Content-Type" : "application/json"
-    //                 },
-    //                 body: JSON.stringify(userDetails),
-    //             }
-    //             const response=await fetch("http://localhost:5176/api/UserDetails/signup",options);
-    //             console.log(response)
-    //             const responseCode=await response.json();
-    //             console.log(responseCode)
-    //             if(response.status===200){
-    //                 console.log(responseCode.prop);
-    //                 alert("User created successfully!")
-    //                 navigate('/logout',{replace:true})
-    //             }
-    //             else{
-    //                 setErrors(Validation(formData))
-    //                 alert("unable is to sign in the page")
-    //             }
-            
-    //     }
-    //     else{
-    //         alert("Both password are must be same. Please try again!")
-    //     }
-    //     }
-        
-    // }
 
     const OnClickSignIn=()=>{
         navigate("/login",{replace:true})
