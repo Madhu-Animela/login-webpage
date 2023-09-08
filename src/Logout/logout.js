@@ -1,7 +1,7 @@
 
 import React  from "react";
 import { useNavigate } from "react-router-dom"; 
-import Text from "./text";
+import Discription from "../Discription/discription";
 
 export default function LogOut(){
     const navigate=useNavigate();
@@ -11,8 +11,8 @@ export default function LogOut(){
     }
     return(
         <div>
-            <Text />
-            <button type="button" className="button-1" onClick={OnClickLogin}>Log Out</button>
+            <Discription/>
+            <button type="button" className="signup-button" onClick={OnClickLogin}>Log Out</button>
         </div>
     )
 }

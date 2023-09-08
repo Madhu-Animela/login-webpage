@@ -1,11 +1,11 @@
 import React ,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-import Validation from "./validation";
-import Text from "./text";
+import Validation from "../ValidationForm/validation";
+import Discription from "../Discription/discription";
 
 function Login(){
-    const[formData,setFormData]=useState({email:"",password:"",email1:"",password1:""});
+    const[formData,setFormData]=useState({email:"",password:""});
     const[errors,setErrors]=useState({})
     const navigate=useNavigate();
 
@@ -14,10 +14,10 @@ function Login(){
         setFormData({...formData,[name]:value})
     }
     
-    const handleSubmit=async(e)=>{
+    const handleSubmitLogin=async(e)=>{
         e.preventDefault();
         setErrors(Validation(formData));
-        if(errors.email1==="success" && errors.password1==="success"){
+        if(errors.email_verify==="success" && errors.password_verify==="success"){
             let userDetails={
                 Email:formData.email,
                 Password:formData.password,
@@ -41,6 +41,8 @@ function Login(){
             }
             else{
                 alert(jsonResponse.prop)
+                errors.email1="";
+                errors.password="";
             }
         }
     }
@@ -60,23 +62,23 @@ function Login(){
     
     return(
         <div className="text-item">
-            <Text />
-            <div className="container-1">
-                <form onSubmit={handleSubmit}>
-                    <h2>Log In</h2>
-                    <div className="container">
-                        {errors.email && <span style={{color:"red"}}>{errors.email}</span>}
-                        <input type="email" name="email" placeholder="Enter Email"  className="input-item" onFocus={handleFocus} value={formData.email} onChange={handleChange}/><br></br>
+            <Discription />
+            <div className="login-container">
+                <form onSubmit={handleSubmitLogin}>
+                    <h2 className="login-heading">Log In</h2>
+                    <div className="input-element-container">
+                        {errors.email && <span className="span-element">{errors.email}</span>}
+                        <input type="email" name="email" placeholder="Enter Email"  className="input-item login-input" onFocus={handleFocus} value={formData.email} onChange={handleChange}/><br></br>
 
-                        {errors.password && <span style={{color:"red"}}>{errors.password}</span>}
-                        <input type="password" name="password" placeholder="Enter Pasword"  className="input-item" onFocus={handleFocus} value={formData.password} onChange={handleChange}/><br></br>
+                        {errors.password && <span className="span-element">{errors.password}</span>}
+                        <input type="password" name="password" placeholder="Enter Pasword"  className="input-item login-input" onFocus={handleFocus} value={formData.password} onChange={handleChange}/><br></br>
 
                         <div className="button-for">
                             <button type="button" className="button-underline" onClick={OnClickForgot}>Forgot Password?</button>
                         </div><br></br>
                         
                         <div className="button-container">
-                            <button type="submit" className="button" >Login </button>
+                            <button type="submit" className="button-for-login" >Login </button>
                             <p>Don't have an Account? <button type="button" className="button-underline" onClick={OnClickSignUp}>Sing Up</button></p>
                         </div>
                     </div>

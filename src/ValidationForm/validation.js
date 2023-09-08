@@ -13,7 +13,7 @@ export default function Validation(inputValues){
     } else if (!/\S+@\S+\.\S+/.test(inputValues.email)) {
       validationErrors.email = 'Please ingress a valid email address';
     } else{
-      validationErrors.email1="success"
+      validationErrors.email_verify="success"
     }
 
     const password = inputValues.password;
@@ -24,7 +24,7 @@ export default function Validation(inputValues){
     } else if (password.length >= 20) {
       validationErrors.password = 'Password must shorter than 20 characters';
     } else{
-      validationErrors.password1="success"
+      validationErrors.password_verify="success"
     }
 
     const password1 = inputValues.newPassword;
@@ -35,18 +35,18 @@ export default function Validation(inputValues){
     } else if (password1.length >= 20) {
       validationErrors.newPassword = 'Password must shorter than 20 characters';
     } else{
-      validationErrors.newPassword1="success"
+      validationErrors.newPassword_verify="success"
     }
 
     const password2 = inputValues.confirmPassword;
     if (!password2) {
       validationErrors.confirmPassword = 'password is required';
     } else if (password2.length < 6) {
-      validationErrors.confirmPassword = 'Password must be longer than 6 characters';
+      validationErrors.confirmPassword = 'Password must be more than 6 characters';
     } else if (password2.length >= 20) {
-      validationErrors.confirmPassword = 'Password must shorter than 20 characters';
+      validationErrors.confirmPassword = 'Password must be less than 20 characters';
     }else{
-      validationErrors.confirmPassword1="success"
+      validationErrors.confirmPassword_verify="success"
     }
     return validationErrors
 }

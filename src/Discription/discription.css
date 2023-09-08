@@ -1,4 +1,4 @@
-.img{
+/* .img{
     background-color: transparent;
     height: 100vh;
     width: 100%;
@@ -8,4 +8,12 @@
     align-items: right;
     padding-left: 100px;
     
+  } */
+  .heading{
+    color: white;
+    font-size: 30px;
+  }
+  .para-1{
+    color: white;
+    font-size: 18px;
   }

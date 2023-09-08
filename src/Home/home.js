@@ -1,7 +1,7 @@
 import React from "react";
 import './home.css';
 import { useNavigate } from "react-router-dom";
-import Text from "./text";
+import Discription from "../Discription/discription";
 
 export default function Home(){
     const navigate=useNavigate();
@@ -15,13 +15,11 @@ export default function Home(){
 
     return(
         <div className="text-item">
-            <div className="text-item">
-            <Text />
-            </div>
-            <div className="container-forgot">
+            <Discription />
+            <div className="forgot-container">
                 <div className="home-container">
-                    <button type="button" className="home-button-1" onClick={OnClickLogin}>Log in</button><br></br>
-                    <button type="button" className="home-button" onClick={OnClickSignUp}>Sign up</button>
+                    <button type="button" className="login-button" onClick={OnClickLogin}>Log in</button><br></br>
+                    <button type="button" className="signup-button" onClick={OnClickSignUp}>Sign up</button>
                 </div>
             </div>
         </div>

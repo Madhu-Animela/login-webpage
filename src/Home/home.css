@@ -8,7 +8,7 @@
     
 }
 
-.home-button{
+.signup-button{
     height: 34px;
     width: 100px;
     border-radius: 10px;
@@ -17,7 +17,7 @@
     color: white;
     font-size: 15px;
 }
-.home-button-1{
+.login-button{
     height: 34px;
     width: 100px;
     border-radius: 10px;

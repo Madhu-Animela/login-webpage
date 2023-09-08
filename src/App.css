@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: left;
   padding: 20px;
   margin: 30px;
@@ -8,8 +8,8 @@
   flex-direction: column;
   padding-top: 10px;
   
-}
-.app-container{
+} */
+/* .app-container{
   background-color: transparent;
   height: 100vh;
   width: 100%;
@@ -17,7 +17,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 /* .App-header {
   background-color: transparent;
@@ -38,11 +38,3 @@
   height: 100vh;
   background-size: cover;
 } 
-.heading{
-  color: white;
-  font-size: 30px;
-}
-.para-1{
-  color: white;
-  font-size: 18px;
-}

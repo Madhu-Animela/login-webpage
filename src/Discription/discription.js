@@ -1,6 +1,6 @@
 import React from "react";
-
- export default function Text(){
+import "./discription.css"
+ export default function Discription(){
     return(
     <div >
         <h1 className='heading'>Turn Your <br></br>Idea's Into Reality</h1><br></br>

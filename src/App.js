@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';  
 import './App.css';
-import Home from "./home";
-import  Login  from "./login";
-import SignUp from './signup';
-import Forgot from './forget';
-import Text from './text';
-import LogOut from './logout';
+import Home from './Home/home';
+import Login from './Login/login';
+import SignUp from './SignUp/signup';
+import Forgot from './Forgot/forget';
+import LogOut from './Logout/logout';
+import Discription from './Discription/discription';
 function App() {
 
   return (
@@ -17,7 +17,7 @@ function App() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/signup' element={<SignUp />} />
                 <Route path="/forget" element={<Forgot />} />
-                <Route path="/text" element={<Text />} />
+                <Route path="/discription" element={<Discription />} />
                 <Route path='/logout' element={<LogOut />} />
             </Routes>
           </div>
