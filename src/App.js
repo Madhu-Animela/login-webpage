@@ -11,7 +11,7 @@ function App() {
 
   return (
           <BrowserRouter>
-          <div className='madhu-app'>
+          <div className='app-container'>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path='/login' element={<Login />} />

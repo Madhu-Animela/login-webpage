@@ -4,10 +4,14 @@ import "./signup.css";
 import { useNavigate } from "react-router-dom";
 import Validation from "../ValidationForm/validation";
 import Discription from "../Discription/discription";
+import { CgDanger } from "react-icons/cg";
 
  function SignUp(){
     const [formData,setFormData]=useState({username:"",email:"",password:"",confirmPassword:""})
     const[errors,setErrors]=useState({})
+    const[propsMessage,setPropsMessage]=useState("")
+    const[props,setProps]=useState(false)
+    const[propMsg,setPropMsg]=useState(false)
 
     const navigate=useNavigate();
 
@@ -18,9 +22,10 @@ import Discription from "../Discription/discription";
     
     const handleSubmit= async (e) =>{
         e.preventDefault();
-        setErrors(Validation(formData))
+        var errData=Validation(formData)
+        setErrors(errData)
 
-        if(errors.email_verify==="success" && errors.password_verify==="success" && errors.confirmPassword_verify==="success"){
+        if(errData.email_verify==="success" && errData.password_verify==="success" && errData.confirmPassword_verify==="success"){
             if(formData.password===formData.confirmPassword){
                 let userDetails={
                     Name:formData.username,
@@ -40,16 +45,19 @@ import Discription from "../Discription/discription";
                 console.log(responseCode)
                 if(response.status===200){
                     console.log(responseCode.prop);
-                    alert("User created successfully!")
+                    setPropsMessage("User created successfully!")
+                    setPropMsg(true)
                     navigate('/logout',{replace:true})
                 }
                 else{
-                    alert("unable is to sign in the page")
+                    setPropsMessage("The Mail is Already Exit!")
+                    setProps(true)
                 }
             
             }
             else{
-                alert("Both the passwords should be same. Please try again!")
+                setPropsMessage("Both the passwords should be same. Please try again!")
+                setProps(true)
                 errors.email_verify="";
                 errors.password_verify="";
                 errors.confirmPassword_verify=""
@@ -106,29 +114,40 @@ import Discription from "../Discription/discription";
     return(
         <div className="text-item">
             <Discription />
-            <div className="sign-up-container">
-                <form onSubmit={handleSubmit}>
-                    <h1 style={{textAlign:"center"}}>Sign Up</h1>
-                    <div className="signup-input-container">
-                        {errors.username && <span className="span-element">{errors.username}</span>}
-                        <input type="text" name="username" placeholder="Enter UserName" className="input-item" onFocus={handleFocus1} value={formData.username} onChange={handleChange}/>
+            <div className="inpit-element-container">
+                {propMsg?<div className="prop-container">
+                     <h3 className="prop-message">{propsMessage}</h3> 
+                </div>:""}
+                {props?<div className="error-container">
+                        <div className="icon-container">
+                            <CgDanger className="icon"/><h3>There Was Problem</h3>
+                        </div>
+                        <p className="para">{propsMessage}</p>
+                    </div>:""}
+                <div className="sign-up-container">
+                    <form onSubmit={handleSubmit}>
+                        <h1 style={{textAlign:"center"}}>Sign Up</h1>
+                        <div className="signup-input-container">
+                            {errors.username && <span className="span-element">{errors.username}</span>}
+                            <input type="text" name="username" placeholder="Enter UserName" className="input-item" onFocus={handleFocus1} value={formData.username} onChange={handleChange}/>
+                            
+                            {errors.email && <span className="span-element">{errors.email}</span>}
+                            <input type="email" name="email" placeholder="Enter Email Id" className="input-item" onFocus={handleFocus1} value={formData.email} onChange={handleChange}/>
+                            
+                            {errors.password && <span className="span-element">{errors.password}</span>}
+                            <input type="password" name="password" placeholder="Enter Password"  className="input-item" onFocus={handleFocus1} value={formData.password} onChange={handleChange}/>
                         
-                        {errors.email && <span className="span-element">{errors.email}</span>}
-                        <input type="email" name="email" placeholder="Enter Email Id" className="input-item" onFocus={handleFocus1} value={formData.email} onChange={handleChange}/>
-                        
-                        {errors.password && <span className="span-element">{errors.password}</span>}
-                        <input type="password" name="password" placeholder="Enter Password"  className="input-item" onFocus={handleFocus1} value={formData.password} onChange={handleChange}/>
-                    
-                        {errors.confirmPassword && <span className="span-element">{errors.confirmPassword}</span>} 
-                        <input type="password" name="confirmPassword" placeholder="Enter Confirm Password"  className="input-item" onFocus={handleFocus1} value={formData.confirmPassword} onChange={handleChange}/><br></br>
-                        
+                            {errors.confirmPassword && <span className="span-element">{errors.confirmPassword}</span>} 
+                            <input type="password" name="confirmPassword" placeholder="Enter Confirm Password"  className="input-item" onFocus={handleFocus1} value={formData.confirmPassword} onChange={handleChange}/><br></br>
+                            
 
-                        <div className="button-container"><button type="submit" className="button-signup" >Sign Up</button></div>
+                            <div className="button-container"><button type="submit" className="button-signup" >Sign Up</button></div>
 
-                        <p>Already  have an Account?<button type="button" className="button-underline" onClick={OnClickSignIn}>Log In</button></p>
-                    
-                    </div>
-                </form>
+                            <p>Already  have an Account?<button type="button" className="button-underline" onClick={OnClickSignIn}>Log In</button></p>
+                        
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     )

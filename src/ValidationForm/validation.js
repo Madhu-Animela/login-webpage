@@ -3,7 +3,10 @@
 export default function Validation(inputValues){
 
     let validationErrors={}
-    
+    console.log(inputValues.username)
+    console.log(inputValues.email)
+    console.log(inputValues.password)
+    console.log(!inputValues.password)
     if(inputValues.username===""){
         validationErrors.username="UserName is required"
     }
@@ -11,42 +14,51 @@ export default function Validation(inputValues){
     if (inputValues.email==="") {
       validationErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(inputValues.email)) {
-      validationErrors.email = 'Please ingress a valid email address';
+      // validationErrors.email = 'Please ingress a valid email address';
+      validationErrors.email="";
     } else{
       validationErrors.email_verify="success"
     }
 
+
     const password = inputValues.password;
-    if (!password) {
-      validationErrors.password = 'password is required';
-    } else if (password.length < 6) {
-      validationErrors.password = 'Password must be longer than 6 characters';
-    } else if (password.length >= 20) {
-      validationErrors.password = 'Password must shorter than 20 characters';
-    } else{
-      validationErrors.password_verify="success"
+    if(password!==undefined){
+      if (password==="") {
+        validationErrors.password = 'password is required';
+      } else if (password.length < 6) {
+        validationErrors.password = 'Password must be longer than 6 characters';
+      } else if (password.length >= 20) {
+        validationErrors.password = 'Password must shorter than 20 characters';
+      } else{
+        validationErrors.password_verify="success"
+      }
+    }
+    
+
+    const newPassword = inputValues.newPassword;
+    if(newPassword!==undefined){
+      if (newPassword==="") {
+        validationErrors.newPassword = 'password is required';
+      } else if (newPassword.length < 6) {
+        validationErrors.newPassword = 'Password must be longer than 6 characters';
+      } else if (newPassword.length >= 20) {
+        validationErrors.newPassword = 'Password must shorter than 20 characters';
+      } else{
+        validationErrors.newPassword_verify="success"
+      }
     }
 
-    const password1 = inputValues.newPassword;
-    if (!password1) {
-      validationErrors.newPassword = 'password is required';
-    } else if (password1.length < 6) {
-      validationErrors.newPassword = 'Password must be longer than 6 characters';
-    } else if (password1.length >= 20) {
-      validationErrors.newPassword = 'Password must shorter than 20 characters';
-    } else{
-      validationErrors.newPassword_verify="success"
-    }
-
-    const password2 = inputValues.confirmPassword;
-    if (!password2) {
-      validationErrors.confirmPassword = 'password is required';
-    } else if (password2.length < 6) {
-      validationErrors.confirmPassword = 'Password must be more than 6 characters';
-    } else if (password2.length >= 20) {
-      validationErrors.confirmPassword = 'Password must be less than 20 characters';
-    }else{
-      validationErrors.confirmPassword_verify="success"
+    const confirmPassword = inputValues.confirmPassword;
+    if(confirmPassword!==undefined){
+      if (confirmPassword==="") {
+        validationErrors.confirmPassword = 'password is required';
+      } else if (confirmPassword.length < 6) {
+        validationErrors.confirmPassword = 'Password must be more than 6 characters';
+      } else if (confirmPassword.length >= 20) {
+        validationErrors.confirmPassword = 'Password must be less than 20 characters';
+      }else{
+        validationErrors.confirmPassword_verify="success"
+      }
     }
     return validationErrors
 }

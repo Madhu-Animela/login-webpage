@@ -9,9 +9,9 @@
     border: 3px solid white;
     border-radius: 10px;
     padding: 20px;
-   
-    margin: 20px;
+    margin-top: 20px;
     color: white;
+    margin-left: 20px;
     
 }
 .signup-input-container{
@@ -37,7 +37,7 @@
     color: white;
 }
 .input-item::placeholder{
-    color:rgb(60, 183, 224);
+    color:rgb(237, 248, 252);
 
 }
 .button-signup{
@@ -52,4 +52,16 @@
 }
 .span-item{
     text-align: left;
+}
+.prop-message{
+    color: rgb(124, 244, 124);
+}
+.prop-container{
+    background-color: transparent;
+    border: 2px solid rgb(124, 244, 124);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
 }
