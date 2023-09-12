@@ -71,3 +71,16 @@
 .icon-container{
     display: flex;
 }
+.login-prop-container{
+    background-color: transparent;
+    border: 2px solid rgb(124, 244, 124);
+    border-radius: 5px;
+    height: auto;
+    width: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-tick{
+    color: rgb(124, 244, 124);
+}

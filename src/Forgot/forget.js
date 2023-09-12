@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import Validation from "../ValidationForm/validation";
 import Discription from "../Discription/discription";
 import { CgDanger } from "react-icons/cg";
-
+import { TiTick } from "react-icons/ti";
 export default function Forgot(){
     const[formData,setFormData]=useState({email:""})
     const[newData,setNewData]=useState({newPassword:"",confirmPassword:""})
@@ -43,12 +43,12 @@ export default function Forgot(){
                 console.log(responseCode)
                 if(response.status===200){
                     console.log(responseCode.prop)
-                    setMessage("Email is successfully verified!")
+                    setMessage("Mail is successfully verified!")
                     setNameCheck(true)
                 }
                 else{
                     console.log(responseCode.prop)
-                    setMessage("Please enter valid email!")
+                    setMessage("User Not Exist, Please Try Again!")
                 }
             }
             catch(error){
@@ -63,7 +63,7 @@ export default function Forgot(){
         var errMsg=Validation(newData)
         setErrors(errMsg)
         console.log(errors)
-        if(errors.email_verify==="success" && errMsg.newPassword_verify==="success" && errMsg.confirmPassword_verify==="success"){
+        if(errMsg.newPassword_verify==="success" && errMsg.confirmPassword_verify==="success"){
             if(newData.newPassword===newData.confirmPassword){
                 let userDetails={
                     Email:formData.email,
@@ -84,8 +84,9 @@ export default function Forgot(){
                 if(response.status===200){
                     console.log(responseCode.prop)
                     setPropsMessage("password is successfully updated!")
+                    setProps(false)
                     setPropMsg(true)
-                    navigate("/login",{replace:true})
+                    setTimeout(()=>{navigate("/login",{replace:true})},3000)
                     
                 }
                 else{
@@ -184,8 +185,11 @@ export default function Forgot(){
         <div className="text-item">
             <Discription />
             <div className="input-element-container">
-                {propMsg?<div className="prop-container">
-                     <h3 className="prop-message">{propsMessage}</h3> 
+                {propMsg?<div className="forgot-prop-container">
+                    <div className="icon-container">
+                        <h3 className="prop-message">{propsMessage} </h3>
+                        <TiTick className="icon icon-tick"/>
+                    </div> 
                 </div>:""}
                 {props?<div className="forgot-error-container">
                         <div className="icon-container">

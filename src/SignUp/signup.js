@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Validation from "../ValidationForm/validation";
 import Discription from "../Discription/discription";
 import { CgDanger } from "react-icons/cg";
+import { TiTick } from "react-icons/ti";
 
  function SignUp(){
     const [formData,setFormData]=useState({username:"",email:"",password:"",confirmPassword:""})
@@ -46,8 +47,9 @@ import { CgDanger } from "react-icons/cg";
                 if(response.status===200){
                     console.log(responseCode.prop);
                     setPropsMessage("User created successfully!")
+                    setProps(false)
                     setPropMsg(true)
-                    navigate('/logout',{replace:true})
+                    // setTimeout(()=>{navigate('/logout',{replace:true})},4000)
                 }
                 else{
                     setPropsMessage("The Mail is Already Exit!")
@@ -116,9 +118,12 @@ import { CgDanger } from "react-icons/cg";
             <Discription />
             <div className="inpit-element-container">
                 {propMsg?<div className="prop-container">
-                     <h3 className="prop-message">{propsMessage}</h3> 
+                <div className="icon-container">
+                        <h3 className="prop-message">{propsMessage} </h3>
+                        <TiTick className="icon icon-tick"/>
+                    </div>
                 </div>:""}
-                {props?<div className="error-container">
+                {props?<div className="error-container sign-up-error">
                         <div className="icon-container">
                             <CgDanger className="icon"/><h3>There Was Problem</h3>
                         </div>

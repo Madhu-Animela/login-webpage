@@ -4,12 +4,14 @@ import "./login.css";
 import Validation from "../ValidationForm/validation";
 import Discription from "../Discription/discription";
 import {CgDanger} from 'react-icons/cg';
+import {TiTick} from "react-icons/ti"
 
 function Login(){
     const[formData,setFormData]=useState({email:"",password:""});
     const[errors,setErrors]=useState({})
     const[propsMessage,setPropsMessage]=useState("")
     const[props,setProps]=useState(false)
+    const[propMsg,setPropMsg]=useState(false)
 
     const navigate=useNavigate();
 
@@ -46,7 +48,11 @@ function Login(){
 
                 if(response.status===200){
                     console.log(jsonResponse.prop);
-                    navigate('/logout',{replace:true})  
+                    setPropsMessage(jsonResponse.prop)
+        
+                    setPropMsg(true)
+                    setProps(false)
+                    setTimeout(()=>{navigate('/logout',{replace:true}) },3000) 
                         
                 }
                 else{
@@ -75,6 +81,12 @@ function Login(){
         <div className="text-item">
             <Discription />
             <div className="input-elements-container">
+                {propMsg?<div className="login-prop-container">
+                    <div className="icon-container">
+                        <h3 className="prop-message">{propsMessage} </h3>
+                        <TiTick className="icon icon-tick"/>
+                    </div> 
+                </div>:""}
                 {props?<div className="error-container">
                     <div className="icon-container">
                         <CgDanger className="icon"/><h3>There Was Problem</h3>
